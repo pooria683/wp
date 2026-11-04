@@ -1,0 +1,24 @@
+name: Extract ZIP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract nova-multipurpose.zip
+        run: |
+          unzip -o nova-multipurpose.zip -d nova-multipurpose/
+          ls -la nova-multipurpose/
+
+      - name: Commit extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add nova-multipurpose/
+          git commit -m "Extract nova-multipurpose.zip" || echo "No changes"
+          git push
