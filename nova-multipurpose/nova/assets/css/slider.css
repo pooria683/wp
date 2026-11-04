@@ -1,0 +1,132 @@
+/* Nova — slider.css (loaded only when a Nova slider is rendered) */
+
+.nv-slider {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--nv-radius);
+	background: #0b0b0d;
+	height: var(--nv-slider-h, 520px);
+	isolation: isolate;
+}
+
+.nv-slider__track {
+	display: flex;
+	height: 100%;
+	will-change: transform;
+	transition: transform .6s var(--nv-ease);
+}
+
+.nv-slider__slide {
+	position: relative;
+	flex: 0 0 100%;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: flex-end;
+}
+
+.nv-slider__img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transform: scale(1.02);
+	transition: transform 8s linear;
+}
+.nv-slider__slide.is-active .nv-slider__img { transform: scale(1.08); }
+
+.nv-slider__overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to top, rgba(9, 9, 11, .82) 0%, rgba(9, 9, 11, .35) 45%, rgba(9, 9, 11, .05) 100%);
+	z-index: 1;
+}
+
+.nv-slider__content {
+	position: relative;
+	z-index: 2;
+	color: #fff;
+	padding-block-end: clamp(28px, 5vw, 64px);
+	padding-inline: clamp(20px, 5vw, 64px);
+	max-width: 760px;
+	margin-inline: 0;
+}
+.nv-slider__title {
+	color: #fff;
+	font-size: clamp(1.4rem, 1vw + 1.6rem, 2.6rem);
+	margin-block: 0 12px;
+	line-height: 1.3;
+	text-shadow: 0 2px 20px rgba(0, 0, 0, .35);
+	opacity: 0;
+	transform: translateY(16px);
+	transition: opacity .6s .1s var(--nv-ease), transform .6s .1s var(--nv-ease);
+}
+.nv-slider__text {
+	color: rgba(255, 255, 255, .88);
+	font-size: clamp(.9rem, .4vw + .85rem, 1.05rem);
+	margin-block: 0 20px;
+	max-width: 56ch;
+	opacity: 0;
+	transform: translateY(16px);
+	transition: opacity .6s .22s var(--nv-ease), transform .6s .22s var(--nv-ease);
+}
+.nv-slider__slide .nv-btn {
+	opacity: 0;
+	transform: translateY(16px);
+	transition: opacity .6s .34s var(--nv-ease), transform .6s .34s var(--nv-ease), box-shadow var(--nv-speed);
+}
+.nv-slider__slide.is-active .nv-slider__title,
+.nv-slider__slide.is-active .nv-slider__text,
+.nv-slider__slide.is-active .nv-btn { opacity: 1; transform: none; }
+
+.nv-slider__arrow {
+	position: absolute;
+	inset-block-start: 50%;
+	transform: translateY(-50%);
+	z-index: 4;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, .16);
+	color: #fff;
+	font-size: 24px;
+	line-height: 1;
+	display: grid;
+	place-items: center;
+	backdrop-filter: blur(6px);
+	transition: background var(--nv-speed), transform var(--nv-speed);
+}
+.nv-slider__arrow:hover { background: rgba(255, 255, 255, .3); transform: translateY(-50%) scale(1.05); }
+.nv-slider__arrow--prev { inset-inline-start: 16px; }
+.nv-slider__arrow--next { inset-inline-end: 16px; }
+
+.nv-slider__dots {
+	position: absolute;
+	inset-block-end: 18px;
+	inset-inline-start: 50%;
+	transform: translateX(-50%);
+	z-index: 4;
+	display: flex;
+	gap: 6px;
+}
+.nv-slider__dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, .45);
+	transition: width var(--nv-speed), background var(--nv-speed);
+}
+.nv-slider__dot.is-active { width: 24px; background: #fff; }
+
+/* placeholder when a slide has no featured image */
+.nv-slider__slide:not(:has(.nv-slider__img)) { background: var(--nv-gradient); }
+
+@media (max-width: 700px) {
+	.nv-slider { height: auto; min-height: 320px; }
+	.nv-slider__track { height: auto; }
+	.nv-slider__slide { min-height: 320px; }
+	.nv-slider__arrow { width: 36px; height: 36px; font-size: 20px; }
+	.nv-slider__content { padding-block-end: 46px; }
+}

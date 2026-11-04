@@ -1,0 +1,29 @@
+/* Nova — blog.css (archives, single, comments) */
+
+.nv-home-slider { margin-block-end: 36px; }
+
+.nv-archive__desc { font-size: .95rem; margin-block-start: -4px; }
+
+.nv-chip { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: .8rem; background: var(--nv-surface); color: var(--nv-muted); font-weight: 600; }
+.nv-chip--cat { background: rgba(var(--nv-primary-rgb), .1); color: var(--nv-primary); }
+
+/* reading progress bar */
+.nv-progress {
+	position: fixed;
+	inset-block-start: 0;
+	inset-inline-start: 0;
+	height: 3px;
+	width: 0;
+	background: var(--nv-gradient);
+	z-index: 10000;
+	transition: width .1s linear;
+}
+
+/* table of contents (auto, from h2s) */
+.nv-toc { background: var(--nv-surface); border: 1px solid var(--nv-border); border-radius: var(--nv-radius); padding: 16px 20px; font-size: .9rem; }
+.nv-toc__title { margin: 0 0 8px; font-size: .95rem; }
+.nv-toc ol { margin: 0; padding-inline-start: 1.2em; }
+
+@media (max-width: 768px) {
+	.nv-single__title { font-size: 1.5rem; }
+}

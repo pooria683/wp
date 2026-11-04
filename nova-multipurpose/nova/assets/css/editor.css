@@ -1,0 +1,17 @@
+/* Nova — editor.css (block editor should look like the front end) */
+
+.editor-styles-wrapper {
+	--nv-primary: #2563eb;
+	--nv-text: #18181b;
+	--nv-muted: #71717a;
+	--nv-border: #e7e8ec;
+	--nv-radius: 14px;
+	font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+	font-size: 16px;
+	line-height: 1.75;
+	color: var(--nv-text);
+}
+.editor-styles-wrapper h1, .editor-styles-wrapper h2, .editor-styles-wrapper h3 { line-height: 1.35; font-weight: 700; }
+.editor-styles-wrapper blockquote { border-inline-start: 4px solid var(--nv-primary); padding-inline-start: 16px; color: var(--nv-muted); }
+.editor-styles-wrapper table { border-collapse: collapse; }
+.editor-styles-wrapper th, .editor-styles-wrapper td { border: 1px solid var(--nv-border); padding: 10px 12px; }

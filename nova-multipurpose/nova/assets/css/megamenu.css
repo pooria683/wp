@@ -1,0 +1,40 @@
+/* Nova — megamenu.css (only enqueued when a menu item has a mega panel/icon) */
+
+.nv-menu > li.menu-item-has-children > a .nv-mega-toggle { display: none; }
+
+.nv-mega {
+	position: absolute;
+	inset-block-start: calc(100% + 8px);
+	inset-inline-start: 50%;
+	transform: translateX(-50%) translateY(8px);
+	width: min(1100px, calc(100vw - 40px));
+	background: var(--nv-bg);
+	border: 1px solid var(--nv-border);
+	border-radius: var(--nv-radius);
+	box-shadow: var(--nv-shadow-lg);
+	padding: 22px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity var(--nv-speed), transform var(--nv-speed), visibility var(--nv-speed);
+	z-index: 70;
+}
+.nv-rtl .nv-mega { transform: translateX(50%) translateY(8px); }
+.nv-menu li:hover > .nv-mega,
+.nv-menu li:focus-within > .nv-mega { opacity: 1; visibility: visible; transform: translateX(-50%); }
+.nv-rtl .nv-menu li:hover > .nv-mega,
+.nv-rtl .nv-menu li:focus-within > .nv-mega { transform: translateX(50%); }
+
+.nv-mega__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 22px;
+}
+.nv-mega__col ul { list-style: none; margin: 0; padding: 0; }
+.nv-mega__col li a { display: block; padding: 6px 0; font-size: .9rem; color: var(--nv-muted); }
+.nv-mega__col li a:hover { color: var(--nv-primary); }
+.nv-mega__title { font-size: .95rem; margin-block-end: 10px; }
+.nv-mega img { border-radius: 10px; }
+
+/* keep the panel inside the viewport for items near the edge */
+.nv-menu > li:nth-last-child(-n+2) .nv-mega { inset-inline-start: auto; inset-inline-end: 0; transform: translateY(8px); }
+.nv-menu > li:nth-last-child(-n+2):hover .nv-mega { transform: none; }

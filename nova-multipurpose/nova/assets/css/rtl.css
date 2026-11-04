@@ -1,0 +1,23 @@
+/* Nova — rtl.css (loaded only when the site language is RTL) */
+
+body { direction: rtl; }
+
+.nv-menu .sub-menu { inset-inline-start: auto; inset-inline-start: 0; }
+.nv-menu .sub-menu .sub-menu { inset-inline-start: auto; inset-inline-end: 100%; }
+
+.nv-player__seek, .nv-player__vol { direction: ltr; }
+.nv-player__time { direction: ltr; font-variant-numeric: tabular-nums; }
+.nv-360__hint { direction: rtl; }
+
+.nv-product__price, .woocommerce-Price-amount { direction: rtl; unicode-bidi: plaintext; }
+
+.nv-crumbs li + li::before { content: "\\"; }
+
+.nv-slider__arrow--prev { inset-inline-start: 16px; inset-inline-end: auto; }
+.nv-slider__arrow--next { inset-inline-end: 16px; inset-inline-start: auto; }
+
+.nv-toast { text-align: right; }
+
+/* digits: keep Latin numerals inside code/inputs */
+input, select, textarea { direction: inherit; }
+input[type="url"], input[type="email"], input[type="tel"], .nv-rep-row input[dir="ltr"] { direction: ltr; text-align: left; }

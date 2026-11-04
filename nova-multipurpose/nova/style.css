@@ -1,0 +1,17 @@
+/*
+Theme Name: Nova Multipurpose
+Theme URI: https://example.com/nova
+Author: Nova Studio
+Author URI: https://example.com
+Description: قالب چندمنظوره‌ی سبک و ماژولار با سیستم حالت (Mode)، لود شرطی دارایی‌ها، هدرساز/فوترساز، مگامنو، پلیر اختصاصی، پشتیبانی المنتور و ووکامرس و پشتیبانی از PWA.
+Version: 1.0.0
+Requires at least: 6.2
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: nova
+Tags: custom-header, custom-menu, custom-logo, featured-images, translation-ready, rtl-language-support, e-commerce, blog, portfolio, right-sidebar
+*/
+
+/* توجه: تمام CSS قالب در assets/css/ قرار دارد و به صورت شرطی بارگذاری می‌شود. */

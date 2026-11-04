@@ -1,0 +1,84 @@
+/* Nova — footer.css */
+
+.nv-footer {
+	background: var(--nv-surface);
+	color: var(--nv-text);
+	padding-block: 56px 24px;
+	border-top: 1px solid var(--nv-border);
+	position: relative;
+}
+/* Dark footer: variables are scoped to the footer element only, so the rest of
+   the page keeps the light palette (the modifier class lives on <body>). */
+.nv-footer-dark .nv-footer {
+	--nv-text: #f4f4f5;
+	--nv-muted: #a1a1aa;
+	--nv-surface: #111113;
+	--nv-border: #2a2a30;
+	--nv-bg: #18181b;
+	background: var(--nv-surface);
+	color: var(--nv-text);
+}
+.nv-footer-dark .nv-footer a { color: var(--nv-text); }
+.nv-footer-gradient .nv-footer {
+	background: var(--nv-gradient);
+	color: #fff;
+	border: 0;
+}
+.nv-footer-gradient .nv-footer a { color: rgba(255, 255, 255, .9); }
+.nv-footer-gradient .nv-footer .nv-social a { background: rgba(255, 255, 255, .16); }
+.nv-footer-gradient .nv-footer .nv-btn { --nv-btn-fg: #fff; border-color: rgba(255, 255, 255, .4); }
+
+.nv-footer__grid {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	gap: 32px;
+}
+.nv-fcol { grid-column: span var(--nv-fcol, 3); min-width: 0; }
+.nv-fcol__brand { font-size: 1.2rem; font-weight: 800; color: inherit; }
+.nv-fcol__title { font-size: .98rem; margin-block-end: 14px; }
+.nv-fcol__html, .nv-fcol__html p { font-size: .9rem; color: inherit; opacity: .85; }
+.nv-fcol .nv-widget { background: none; border: 0; padding: 0; }
+.nv-fcol .nv-widget ul { list-style: none; padding: 0; }
+.nv-fcol .nv-widget li + li { border: 0; padding: 0; margin: 0; }
+
+.nv-flist { list-style: none; padding: 0; margin: 0; }
+.nv-flist a { display: inline-block; padding-block: 4px; font-size: .9rem; color: inherit; opacity: .85; }
+.nv-flist a:hover { opacity: 1; color: var(--nv-primary); }
+.nv-footer-gradient .nv-flist a:hover { color: #fff; text-decoration: underline; }
+
+.nv-badges {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding: 28px 0 0;
+	margin: 32px 0 0;
+	border-top: 1px solid currentColor;
+	border-color: rgba(127, 127, 127, .18);
+}
+.nv-badges__item { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; opacity: .85; }
+.nv-badges__ico { width: 18px; height: 18px; }
+
+.nv-footer__bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-block-start: 22px;
+	padding-block-start: 18px;
+	border-top: 1px solid rgba(127, 127, 127, .18);
+	font-size: .82rem;
+	opacity: .8;
+}
+.nv-footer__copy { margin: 0; }
+.nv-footer__links { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; }
+
+@media (max-width: 900px) {
+	.nv-footer__grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+	.nv-fcol { grid-column: span 3; }
+}
+@media (max-width: 560px) {
+	.nv-fcol { grid-column: span 6; }
+	.nv-footer__bottom { flex-direction: column; align-items: flex-start; }
+}

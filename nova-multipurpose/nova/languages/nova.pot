@@ -1,0 +1,41 @@
+# Copyright (C) 2025 Nova Studio
+# This file is distributed under the GNU GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Nova Multipurpose 1.0.0\n"
+"Report-Msgid-Bugs-To: https://example.com/nova\n"
+"POT-Creation-Date: 2025-01-01T00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 3.4\n"
+"X-Domain: nova\n"
+
+#. Theme Name of the theme
+msgid "Nova Multipurpose"
+msgstr ""
+
+#: inc/class-nova-modes.php
+msgid "فروشگاه / کسب‌وکار اینترنتی (WooCommerce)"
+msgstr ""
+
+#: inc/class-nova-modes.php
+msgid "وبلاگ / مجله"
+msgstr ""
+
+#: inc/class-nova-modes.php
+msgid "نمونه‌کار (Portfolio)"
+msgstr ""
+
+#: inc/class-nova-modes.php
+msgid "شرکتی / آژانس"
+msgstr ""
+
+#: inc/class-nova-modes.php
+msgid "خبری / تخصصی"
+msgstr ""
+
+#: inc/class-nova-modes.php
+msgid "لندینگ / تک‌صفحه‌ای"
+msgstr ""
