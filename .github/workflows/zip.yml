@@ -3,22 +3,42 @@ name: Extract ZIP
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   extract:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Extract nova-multipurpose.zip
         run: |
+          set -euo pipefail
+
+          if [ ! -f nova-multipurpose.zip ]; then
+            echo "Error: nova-multipurpose.zip was not found in the repository root."
+            exit 1
+          fi
+
           unzip -o nova-multipurpose.zip -d nova-multipurpose/
           ls -la nova-multipurpose/
 
-      - name: Commit extracted files
+      - name: Commit and push extracted files
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add nova-multipurpose/
-          git commit -m "Extract nova-multipurpose.zip" || echo "No changes"
-          git push
+          git add -- nova-multipurpose/
+
+          if git diff --cached --quiet; then
+            echo "No extracted-file changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Extract nova-multipurpose.zip"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
