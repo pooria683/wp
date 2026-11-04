@@ -1,0 +1,3 @@
+steps:
+  - name: Extract ZIP
+    run: unzip path/to/file.zip -d output_directory/
