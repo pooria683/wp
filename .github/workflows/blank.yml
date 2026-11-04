@@ -1,65 +1,24 @@
-name: Extract Nova Multipurpose ZIP
+name: Extract ZIP
 
-# ──────────────────────────────────────────────
-# Trigger: به‌صورت دستی یا هنگام push
-# ──────────────────────────────────────────────
 on:
-  workflow_dispatch:          # اجرای دستی از تب Actions
-  push:
-    paths:
-      - 'nova-multipurpose.zip'   # فقط وقتی این فایل تغییر کرد
+  workflow_dispatch:
 
-# ──────────────────────────────────────────────
-# Jobs
-# ──────────────────────────────────────────────
 jobs:
-  extract-zip:
+  extract:
     runs-on: ubuntu-latest
-
     steps:
-      # ۱. دریافت کد ریپازیتوری
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      # ۲. بررسی وجود فایل ZIP
-      - name: Check if ZIP exists
+      - name: Extract nova-multipurpose.zip
         run: |
-          if [ ! -f "nova-multipurpose.zip" ]; then
-            echo "❌ فایل nova-multipurpose.zip یافت نشد!"
-            exit 1
-          fi
-          echo "✅ فایل پیدا شد. حجم:"
-          ls -lh nova-multipurpose.zip
-
-      # ۳. اکسترکت کردن فایل ZIP
-      - name: Extract ZIP file
-        run: |
-          mkdir -p nova-multipurpose
           unzip -o nova-multipurpose.zip -d nova-multipurpose/
-          echo "📂 محتوای اکسترکت‌شده:"
           ls -la nova-multipurpose/
 
-      # ۴. (اختیاری) حذف فایل ZIP پس از اکسترکت
-      - name: Remove original ZIP
-        run: |
-          rm -f nova-multipurpose.zip
-          echo "🗑️ فایل ZIP اصلی حذف شد."
-
-      # ۵. (اختیاری) Commit و Push فایل‌های اکسترکت‌شده
-      - name: Commit and push extracted files
+      - name: Commit extracted files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add nova-multipurpose/
-          git add -u nova-multipurpose.zip   # حذف ZIP از ریپازیتوری
-          
-          # فقط اگر تغییری وجود داشت commit کن
-          if git diff --cached --quiet; then
-            echo "ℹ️ تغییری برای commit وجود ندارد."
-          else
-            git commit -m "📦 Extract nova-multipurpose.zip contents"
-            git push
-            echo "✅ فایل‌ها با موفقیت push شدند."
-          fi
+          git commit -m "Extract nova-multipurpose.zip" || echo "No changes"
+          git push
